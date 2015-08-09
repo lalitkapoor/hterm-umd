@@ -42,7 +42,10 @@
 if (typeof lib != 'undefined')
   throw new Error('Global "lib" object already exists.');
 
+var universe = {};
+
 var lib = {};
+universe.lib = lib;
 
 /**
  * Map of "dependency" to ["source", ...].
@@ -125,7 +128,7 @@ lib.ensureRuntimeDependencies_ = function() {
 
     // In a document context 'window' is the global object.  In a worker it's
     // called 'self'.
-    var obj = (window || self);
+    var obj = universe;
     for (var i = 0; i < names.length; i++) {
       if (!(names[i] in obj)) {
         console.warn('Missing "' + path + '" is needed by', sourceList);
@@ -140,6 +143,7 @@ lib.ensureRuntimeDependencies_ = function() {
   if (!passed)
     throw new Error('Failed runtime dependency check');
 };
+
 
 /**
  * Register an initialization function.
@@ -4881,7 +4885,9 @@ lib.rtdep('lib.Storage');
  * @fileoverview Declares the hterm.* namespace and some basic shared utilities
  * that are too small to deserve dedicated files.
  */
+
 var hterm = {};
+universe.hterm = hterm;
 
 /**
  * The type of window hosting hterm.
@@ -16064,3 +16070,8 @@ lib.resource.add('hterm/git/HEAD', 'text/plain',
 '5db5b0ceefff97ce8b7a97edd3f5ba6857db54cf' +
 ''
 );
+
+module.exports = {
+  lib: lib,
+  hterm: hterm
+}
