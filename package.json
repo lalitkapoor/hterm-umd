@@ -1,0 +1,23 @@
+{
+  "name": "node-hterm",
+  "version": "1.0.0",
+  "description": "hterm bundled and exported using commonJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lalitkapoor/node-hterm.git"
+  },
+  "keywords": [
+    "hterm",
+    "commonjs"
+  ],
+  "author": "Lalit Kapoor <lalitkapoor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lalitkapoor/node-hterm/issues"
+  },
+  "homepage": "https://github.com/lalitkapoor/node-hterm"
+}
